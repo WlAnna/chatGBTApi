@@ -5,7 +5,7 @@
     "requires": true,
     "packages": {
         "": {
-            "name": "chatGPTApi",
+            "name": "client",
             "version": "0.0.0",
             "dependencies": {
                 "express-rate-limit": "^6.7.0"
