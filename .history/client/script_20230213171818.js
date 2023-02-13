@@ -82,7 +82,7 @@ const handleSubmit = async(e) => {
     chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
 
     // to focus scroll to the bottom 
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    chatContainer.scrollTop = chatContainer.scrollHeight; // put new message in view when user typing
 
     // specific message div 
     const messageDiv = document.getElementById(uniqueId)
@@ -90,7 +90,17 @@ const handleSubmit = async(e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('https://codex-im0y.onrender.com/', {
+    // until this code you cen test
+    // create backend app to make a call to open ai API
+    // ctrl + C to stop running terminal > cdd server >  npm init -y to create package.json > install dependciens
+    // npm install cors = cross origin request, dotenv = secure environment variable, express= backend framework,
+    // nodemon = to keep app running when we implement changes and openai
+    // create server.js . env. update package.json (remove main, add module type, add scripts server: nodemon server)
+    // open second terminal  in server folder: npm run server, in client folder: npm run dev. Otwierasz dwie strony
+
+    //https://chatgptapi-rrwj.onrender.com/ http://localhost:5000
+
+    const response = await fetch('https://chatgptapi-rrwj.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -114,4 +124,15 @@ const handleSubmit = async(e) => {
         messageDiv.innerHTML = "Something went wrong"
         alert(err)
     }
+
+
 }
+
+// 401 - unauthorised
+
+form.addEventListener('submit', handleSubmit)
+form.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) { // 13 is enter key
+        handleSubmit(e)
+    }
+})

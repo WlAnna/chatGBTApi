@@ -98,7 +98,9 @@ const handleSubmit = async(e) => {
     // create server.js . env. update package.json (remove main, add module type, add scripts server: nodemon server)
     // open second terminal  in server folder: npm run server, in client folder: npm run dev. Otwierasz dwie strony
 
-    const response = await fetch('https://chatgptapi-rrwj.onrender.com/', {
+    //https://chatgptapi-rrwj.onrender.com/ http://localhost:5000
+
+    const response = await fetch('https://chatgptapi-rrwj.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
